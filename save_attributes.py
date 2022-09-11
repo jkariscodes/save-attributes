@@ -22,7 +22,7 @@
  ***************************************************************************/
 """
 
-from qgis.core import QgsProject
+from qgis.core import QgsProject, Qgis
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
 from qgis.PyQt.QtWidgets import QAction, QFileDialog
@@ -220,5 +220,10 @@ class SaveAttributes:
                 for f in selected_layer.getFeatures():
                     line = ','.join(str(f[name]) for name in field_names) + '\n'
                     output_file.write(line)
+
+            self.iface.messageBar().pushMessage(
+                "Success", "Output file written at " + filename,
+                level=Qgis.Success, duration=3
+            )
 
 
