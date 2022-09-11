@@ -13,4 +13,8 @@ QGIS plugin that saves attributes from vector file to a Comma Separated Values (
 
 ![image](https://user-images.githubusercontent.com/23359514/189530063-ead84fca-d558-4c7e-b9f6-395e1c2c38b5.png)
 
+# Acknowledgments
+* [Ujaval Gandhi](https://github.com/spatialthoughts)
+* [QGIS](https://github.com/qgis/QGIS)
+
 
