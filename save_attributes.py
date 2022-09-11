@@ -25,7 +25,7 @@
 from qgis.core import QgsProject
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication
 from qgis.PyQt.QtGui import QIcon
-from qgis.PyQt.QtWidgets import QAction
+from qgis.PyQt.QtWidgets import QAction, QFileDialog
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -179,6 +179,13 @@ class SaveAttributes:
                 action)
             self.iface.removeToolBarIcon(action)
 
+    def select_output_file(self):
+        """Open file browser pointing to the output path."""
+        filename, _filter = QFileDialog.getSaveFileName(
+            self.dlg, "Select output file ", "", '*.csv'
+        )
+        self.dlg.lEditSelectOutput.setText(filename)
+
     def run(self):
         """Run method that performs all the real work"""
 
@@ -187,6 +194,7 @@ class SaveAttributes:
         if self.first_start:
             self.first_start = False
             self.dlg = SaveAttributesDialog()
+            self.dlg.btnSelectOutFile.clicked.connect(self.select_output_file)
             # Fetch currently loaded layers
             layers = QgsProject.instance().layerTreeRoot().children()
             # Clear combo box contents from previous runs
