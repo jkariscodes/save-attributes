@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Save Attributes</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/plugins/save_attributes/icon.png</normaloff>:/plugins/save_attributes/icon.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QLabel" name="lblSelectLayer">
@@ -25,7 +29,7 @@
     <widget class="QComboBox" name="cmbSelectLayer"/>
    </item>
    <item row="1" column="0" colspan="2">
-    <widget class="QLabel" name="lblSelectOutput">
+    <widget class="QLabel" name="lblSelectOutFile">
      <property name="text">
       <string>Select output file</string>
      </property>
