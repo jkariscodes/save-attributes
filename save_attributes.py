@@ -208,5 +208,17 @@ class SaveAttributes:
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            pass
+            filename = self.dlg.lEditSelectOutput.text()
+            with open(filename, 'w') as output_file:
+                selected_layer_index = self.dlg.cmbSelectLayer.currentIndex()
+                selected_layer = layers[selected_layer_index].layer()
+                field_names = [field.name() for field in selected_layer.fields()]
+                # Write header
+                line = ','.join(name for name in field_names) + '\n'
+                output_file.write(line)
+                # Write feature attributes
+                for f in selected_layer.getFeatures():
+                    line = ','.join(str(f[name]) for name in field_names) + '\n'
+                    output_file.write(line)
+
 
